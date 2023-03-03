@@ -1,0 +1,20 @@
+
+
+
+
+if __name__ == "__main__":
+    quotes = []  
+
+    
+    with open("txt/ind_1.txt", "r", encoding="utf8") as fileptr:
+        
+        for i in fileptr:
+            startIndex = i.find('"')  
+            while startIndex != -1:
+                endIndex = i.find('"', startIndex + 1)
+                if startIndex != -1 and endIndex != -1:  
+                    quotes.append(i[startIndex : endIndex + 1])
+                    startIndex = i.find('"', endIndex + 1)
+    
+    
+    print(*quotes, sep="\n")
